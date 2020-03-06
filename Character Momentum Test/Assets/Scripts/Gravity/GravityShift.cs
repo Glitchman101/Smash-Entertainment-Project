@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class GravityShift : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float x = 0f;
+    public float y = 0f;
+    public float z = 0f;
+
+    public float rX = 0;
+    public float rY = 0;
+    public float rZ = 0;
+
+    public GameObject Player;
+  
+    private void OnTriggerEnter(Collider collider)
     {
-        
+        if (collider.gameObject.tag == "Player")
+        {
+            Physics.gravity = new Vector3(x, y, z);
+            Player.transform.rotation = Quaternion.Euler(rX, rY, rZ);
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void GravShift()
     {
         if (Input.GetKey(KeyCode.UpArrow))

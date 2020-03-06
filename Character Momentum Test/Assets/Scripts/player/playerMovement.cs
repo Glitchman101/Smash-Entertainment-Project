@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpforce;
-    [SerializeField] private float jumpRaycastDistance;
+    public float speed;
+    public float jumpforce;
+    public float jumpRaycastDistance;
 
     private Rigidbody rb; 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Example();
-
     }
 
     private void Update()
@@ -53,10 +51,5 @@ public class playerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, jumpRaycastDistance);
-    }
-
-    void Example()
-    {
-        Physics.gravity = new Vector3(0, -2.0f, 0);
     }
 }
