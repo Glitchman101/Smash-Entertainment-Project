@@ -14,9 +14,9 @@ public class GravityShift : MonoBehaviour
 
     public GameObject Player;
   
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Physics.gravity = new Vector3(x, y, z);
             Player.transform.rotation = Quaternion.Euler(rX, rY, rZ);
