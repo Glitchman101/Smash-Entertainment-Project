@@ -8,6 +8,10 @@ public class GravityShift : MonoBehaviour
     public float y = 0f;
     public float z = 0f;
 
+    public float x2 = 0f;
+    public float y2 = 0f;
+    public float z2 = 0f;
+
     public float rX = 0;
     public float rY = 0;
     public float rZ = 0;
@@ -18,9 +22,16 @@ public class GravityShift : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Physics.gravity = new Vector3(x, y, z);
+            Player.GetComponent<ConstantForce>().force = new Vector3(x, y, z);
             Player.transform.rotation = Quaternion.Euler(rX, rY, rZ);
         } 
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Player.GetComponent<ConstantForce>().force = new Vector3(x2, y2, z2);
+        }
     }
 
     private void GravShift()

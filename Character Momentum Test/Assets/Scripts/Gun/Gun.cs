@@ -4,6 +4,7 @@ public class Gun : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 100f;
+    public float knockbackAmount;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;

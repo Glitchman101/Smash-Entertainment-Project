@@ -13,12 +13,11 @@ public class playerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0, -9.8f, 0);
     }
 
     private void Update()
     {
-        
+        Jump();
     }
 
     private void FixedUpdate()
@@ -36,8 +35,13 @@ public class playerMovement : MonoBehaviour
         Vector3 newPosition = rb.position + rb.transform.TransformDirection(movement);
 
         rb.MovePosition(newPosition);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (IsGrounded())
+            {
 
-        Jump();
+            }
+        }
     }
 
     private void Jump()
