@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GravityShift : MonoBehaviour
 {
-    public float x = 0f;
+    float x;
     public float y = 0f;
-    public float z = 0f;
+    float z;
 
     public float x2 = 0f;
     public float y2 = 0f;
@@ -15,6 +15,10 @@ public class GravityShift : MonoBehaviour
     public float rX = 0;
     public float rY = 0;
     public float rZ = 0;
+
+    public float rX2 = 0f;
+    public float rY2 = 0f;
+    public float rZ2 = 0f;
 
     public GameObject Player;
   
@@ -31,29 +35,8 @@ public class GravityShift : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Player.GetComponent<ConstantForce>().force = new Vector3(x2, y2, z2);
+            Player.transform.rotation = Quaternion.Euler(rX2, rY2, rZ2);
         }
     }
 
-    private void GravShift()
-    {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Physics.gravity = new Vector3(0, 9.8f, 0);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Physics.gravity = new Vector3(0, -9.8f, 0);
-
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Physics.gravity = new Vector3(9.8f, 0, 0);
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Physics.gravity = new Vector3(-9.8f, 0, 0);
-            transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
-    }
 }
