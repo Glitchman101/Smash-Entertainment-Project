@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GravityShift : MonoBehaviour
 {
-    private float x;
-    private float y = -9.81f;
+    private float x = -9.81f;
+    private float y;
     private float z;
 
     private float x2;
